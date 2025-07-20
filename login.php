@@ -19,7 +19,7 @@ function login($username, $password) {
 $error = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $username = $_POST['username'] ?? '';
+  $username = trim($_POST['username']) ?? '';
   $password = $_POST['password'] ?? '';
 
   if (empty($username) || empty($password)) {
@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
       $_SESSION['username'] = $user['username'];
       $_SESSION['role'] = $user['role'];
+
       header("Location: dashboard.php");
       exit;
     } else {
@@ -42,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login | Finance Portal</title>
+  <title>Login | Finance Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
@@ -52,21 +53,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     body {
-      background-color: #121212;
+      background-color: #0d0d0d;
       color: #f1f1f1;
       margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-image: radial-gradient(circle at center, #1f1f1f 0%, #0d0d0d 100%);
+      background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
     }
 
     .login-box {
-      background: #1e1e1e;
+      background: #1f1f1f;
       padding: 40px;
       border-radius: 16px;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
       width: 100%;
       max-width: 400px;
       text-align: center;
@@ -129,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
   <div class="login-box">
-    <h2>Login to Control Panel</h2>
+    <h2>Login to Your Panel</h2>
     <form method="POST">
       <input type="text" name="username" placeholder="Username" required>
       <input type="password" name="password" placeholder="Password" required>
