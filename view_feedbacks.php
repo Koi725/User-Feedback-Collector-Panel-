@@ -12,9 +12,11 @@ $file = __DIR__ . '/feedbacks.json';
 
 if (file_exists($file)) {
   $all = json_decode(file_get_contents($file), true);
-  foreach ($all as $entry) {
-    if ($entry['username'] === $username) {
-      $feedbacks[] = $entry;
+  if (isset($all['feedbacks']) && is_array($all['feedbacks'])) {
+    foreach ($all['feedbacks'] as $entry) {
+      if ($entry['username'] === $username) {
+        $feedbacks[] = $entry;
+      }
     }
   }
 }

@@ -90,7 +90,6 @@ if (file_exists($file)) {
         <thead>
           <tr>
             <th>User</th>
-            <th>Subject</th>
             <th>Message</th>
             <th>Date</th>
           </tr>
@@ -99,7 +98,6 @@ if (file_exists($file)) {
           <?php foreach ($feedbacks as $fb): ?>
             <tr>
               <td><?= htmlspecialchars($fb['username']) ?></td>
-              <td><?= htmlspecialchars($fb['subject']) ?></td>
               <td><?= htmlspecialchars($fb['message']) ?></td>
               <td><?= htmlspecialchars($fb['date']) ?></td>
             </tr>
